@@ -1,7 +1,7 @@
 use std::process::Stdio;
 
 use axum::{
-    extract::{self, ws::{WebSocket, WebSocketUpgrade, Message}}, response::{IntoResponse, Response}, routing::{get, post}, Router
+    extract::ws::{WebSocket, WebSocketUpgrade, Message}, response::{IntoResponse, Response}, routing::{get, post}, Router
 };
 use anyhow::{ Result, anyhow, Context };
 use tokio::{io::{AsyncBufReadExt, BufReader}, process::Command};
@@ -85,7 +85,7 @@ async fn handle_socket(mut socket: WebSocket) {
         println!("Finished processing request for '{username}'.");
     }
 }
-async fn static_lookup ( extract::Json(username): extract::Json<String> ) -> Response {
+async fn static_lookup ( username: String ) -> Response {
     println!("Received request for {username}...");
 
     let proxy_link = std::env::var("PROXY_LINK").expect("Missing PROXY_LINK env variable!");
