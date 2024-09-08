@@ -21,7 +21,7 @@ async fn handle_socket(mut socket: WebSocket) {
         println!("Received websocket request for '{username}'...");
 
         let proxy_link = std::env::var("PROXY_LINK").expect("Missing PROXY_LINK env variable!");
-        let invalid_sites: [&str; 42] = [
+        let invalid_sites: [&str; 46] = [
             "Oracle", "8tracks", "Coders Rank", "Fiverr",
             "HackerNews", "Modelhub", "metacritic", "xHamster",
             "CNET", "YandexMusic", "HackerEarth", "OpenStreetMap", 
@@ -30,7 +30,8 @@ async fn handle_socket(mut socket: WebSocket) {
             "Contently", "Euw", "OurDJTalk", "BitCoinForum", "HEXRPG",
             "Polymart", "Linktree", "GeeksforGeeks", "Kongregate", "RedTube",
             "APClips", "Heavy-R", "RocketTube", "Zhihu", "NitroType", "babyRU",
-            "freecodecamp", "Alik.cz", "ICQ", "NICommunityForum"
+            "freecodecamp", "Alik.cz", "ICQ", "NICommunityForum", "HackTheBox",
+            "Lichess", "Pokemon Showdown", "Vero"
         ];
 
         let mut cmd = Command::new("python")
