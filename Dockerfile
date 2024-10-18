@@ -11,6 +11,7 @@ FROM python:3.12-slim
 COPY --from=build /target/release/sherlock-api /sherlock-api
 COPY --from=build /sherlock /sherlock
 RUN pip install -r "/sherlock/sherlock/requirements.txt"
+RUN chmod +x /sherlock/sherlock
 VOLUME /data
 ARG PORT
 CMD ["/sherlock-api"]
